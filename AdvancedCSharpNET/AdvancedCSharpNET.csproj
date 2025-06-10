@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>AdvancedCSharp</RootNamespace>
-    <StartupObject>AdvancedCSharp.Samples.Delegates.DelegateOverview</StartupObject>
+    <StartupObject>AdvancedCSharp.Samples.RegEx.RegExIntruduction</StartupObject>
   </PropertyGroup>
 
 </Project>

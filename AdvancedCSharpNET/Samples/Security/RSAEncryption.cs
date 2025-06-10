@@ -8,8 +8,11 @@ namespace AdvancedCSharp.Samples.Security
     {
         static void Main()
         {
-            var password = "P@$$w0rd";
+            var aes = Aes.Create();
 
+
+
+            var password = "P@$$w0rd";
             using (var rsa = new RSACryptoServiceProvider())
             {
                 var encrypted = Encrypt(password, rsa.ExportParameters(false));

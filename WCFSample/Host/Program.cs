@@ -9,12 +9,14 @@ namespace Host
     {
         public static void Main(string[] args)
         {
+
             var svc = new ServiceHost(typeof(RectangleTransform),
                    new Uri("http://localhost:8888/RectangleTransform"));
             svc.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
             svc.Description.Behaviors.Find<ServiceDebugBehavior>().IncludeExceptionDetailInFaults = true;
             svc.AddServiceEndpoint(typeof(IShapeTransformation), new WSHttpBinding(), "");
             var rectHost = new Host(svc);
+
 
 
             svc = new ServiceHost(typeof(CalculationDuplex),

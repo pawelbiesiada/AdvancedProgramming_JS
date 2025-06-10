@@ -1,4 +1,6 @@
-﻿namespace AdvancedCSharp.Samples.Class
+﻿using System;
+
+namespace AdvancedCSharp.Samples.Class
 {
     public class Car
     {
@@ -11,6 +13,8 @@
         // Constructor
         public Car(int avgSpeed)
         {
+            if(avgSpeed < 0)
+                throw new ArgumentOutOfRangeException(nameof(avgSpeed));
             //var car = new Car(100); initialization sample
             _speed = avgSpeed;
         }
@@ -23,6 +27,9 @@
         public void Drive(int duration)
         {
             Distance += CalculateDistance(_speed, duration);
+            //var attrs = this.GetType().GetMethod(nameof(Drive)).GetCustomAttributes(false);            
+
+            Console.WriteLine($"Wywołuje metodę {nameof(Drive)} z wartością duration={duration}.");
         }
 
         public bool IsServiceCheckNeeded()

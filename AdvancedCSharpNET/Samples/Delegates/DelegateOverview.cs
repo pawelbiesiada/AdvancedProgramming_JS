@@ -2,7 +2,11 @@
 
 namespace AdvancedCSharp.Samples.Delegates
 {
-    public delegate int IntOperation(int x, int y);
+    public delegate int IntOperation(int x, int y);   //Func<int, int, int>
+
+    public delegate void VoidOperation(int x, int y);
+    // void MyEvent(object obj, EventArgs e)
+
 
     internal class DelegateOverview
     {
@@ -12,11 +16,21 @@ namespace AdvancedCSharp.Samples.Delegates
             var a = 3;
             var b = 2;
 
+            IntOperation op1 = null;
+
             IntOperation operation = (x, y) => { Console.WriteLine("add"); return x + y; };
+
             //var operation = new IntOperation((x, y) => { return x - y; });  //or this
              //var operation = new IntOperation(Math.Min);                    //or this
 
-            var ret = operation.Invoke(a,b); //sum
+            var ret = operation(a,b); //sum
+
+            VoidOperation v = (x, y) => { };
+            v += (x, y) => { };
+
+            v(1, 2);
+
+
             Console.WriteLine("Sum on {0} and {1} is {2}", a,b, ret);
 
             operation = (x, y) => { Console.WriteLine("sub"); return x - y; };
@@ -29,7 +43,7 @@ namespace AdvancedCSharp.Samples.Delegates
 
             /*
              * Action  void Foo()
-             * Action<T,U> void Foo(T a, U b) 
+             * Action<T,U> void Foo(T a, U b)    Acion<T>  void Foo(T a)
              * 
              * Func<R> R Foo()
              * 

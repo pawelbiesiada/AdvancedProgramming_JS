@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.IO;
+using System.Linq;
 
 namespace AdvancedCSharp.Samples.Reflection
 {
@@ -9,7 +10,10 @@ namespace AdvancedCSharp.Samples.Reflection
         static void Main(string[] args)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            //var assembly = Assembly.LoadFile(@"C:\Program Files (x86)\Microsoft\ILMerge\MergedLibrary.dll");
+            assembly = Assembly.LoadFile(@"C:\Program Files (x86)\Microsoft\ILMerge\MergedLibrary.dll");
+
+
+            //assembly.DefinedTypes.First().GetMethods().First().
 
             Console.WriteLine("Assembly Full Name:");
             Console.WriteLine(assembly.FullName);

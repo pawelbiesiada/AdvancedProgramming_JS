@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AdvancedCSharp.Samples.Delegates
 {
@@ -12,7 +13,7 @@ namespace AdvancedCSharp.Samples.Delegates
         }
     }
 
-    class EventsPresentation
+    class EventsPresentation : IDisposable
     {
         public delegate void MessageEventHandler(object obj, MessageEventArgs eventArgs);
 
@@ -24,6 +25,7 @@ namespace AdvancedCSharp.Samples.Delegates
             PreAction += Print;
             PreAction += Print;
             PostAction += Print;
+            PreAction += (o, e) => { /*some external reference here */}; 
         }
 
         static void Main()
@@ -46,6 +48,14 @@ namespace AdvancedCSharp.Samples.Delegates
             var message = eventArgs.Message;
 
             Console.WriteLine(message);
+        }
+
+        public void Dispose()
+        {
+            PreAction -= Print;
+            PreAction -= Print;
+            PostAction -= Print;
+            PreAction -= (o, e) => { /*some external reference here */ }; /// źle
         }
     }
 }

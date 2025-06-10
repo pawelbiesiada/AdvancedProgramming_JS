@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdvancedCSharp.Samples.Class;
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -9,14 +10,23 @@ namespace AdvancedCSharp.Samples.Reflection
         public const string SampleClass = "AdvancedCSharp.Samples.Reflection.SampleClass";
         public const string MyGenericClass = "AdvancedCSharp.Samples.Reflection.MyGeneric`1";
 
-        static void Main()
+        static void Main(string[] args)
         {
             var assembly = Assembly.GetExecutingAssembly();
+
+            var c = new SampleClass(50);
+            c.Sum(10);
+
             //object initialization
             object sampleClassObject = assembly.CreateInstance(SampleClass, false,
                 BindingFlags.ExactBinding,
                 null, new object[] { 2 }, null, null);
             var classType = assembly.GetType(SampleClass);
+
+            //dynamic sampleClassDynamic = sampleClassObject;
+            //int i = sampleClassDynamic.Sum(10);
+            //int j = sampleClassDynamic.Sum(10, 10);
+            //int k = sampleClassDynamic.sdlfkajsdfoisdjfsalkdvasofiu("fdsgs");
 
             //generic type initialization
             var genericType = assembly.GetType("AdvancedCSharp.Samples.Reflection.VersionUpdate");

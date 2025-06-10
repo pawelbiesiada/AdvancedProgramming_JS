@@ -31,7 +31,8 @@ namespace AdvancedCSharp.Samples.Reflection
         }
 
         public UpdateProfile[] Profiles { get; set; }
-        
+
+        [Obsolete]
         public int Sequence { get; set; }
     }
 

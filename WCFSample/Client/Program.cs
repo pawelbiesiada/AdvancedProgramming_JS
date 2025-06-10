@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.ServiceModel;
 using Client.CalculationDuplex;
 using Client.Transformation;
@@ -9,6 +10,10 @@ namespace Client
     {
         public static void Main(string[] args)
         {
+            var client = new Client("https://localhost:7030/", new HttpClient());
+
+            var user = client.UserGETAsync(3);
+
             WCFServiceSimple();
             Console.WriteLine();
 

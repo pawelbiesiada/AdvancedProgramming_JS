@@ -28,23 +28,26 @@ namespace Exercises.Delegates.Sample
     {
         public string Name { get; private set; }
 
-        private readonly CarFactory _carFactory;
+        private readonly Func<int> _speedLimit;
 
-        public Car(string name, CarFactory carFactory)
+        public event EventHandler CarUsed;
+
+        public Car(string name, Func<int> speedLimit)
         {
-            _carFactory = carFactory;
             Name = name;
+            _speedLimit = speedLimit;
         }
 
         public void Drive()
         {
-            _carFactory.TotalUsageCount++;
+            CarUsed(this, new EventArgs());
             AccelerateAndDrive();
         }
 
+
         private void AccelerateAndDrive()
         {
-            var maxSpeed = _carFactory.MaxSpeedLimit;
+            var maxSpeed = _speedLimit();
             Console.WriteLine("{0} speed is {1}", Name, maxSpeed);
         }
     }
@@ -62,7 +65,10 @@ namespace Exercises.Delegates.Sample
 
         public Car CreateCar(string carName)
         {
-            return new Car(carName, this);
+            var car = new Car(carName, () => MaxSpeedLimit);
+            car.CarUsed += (o, e) => { TotalUsageCount++; };
+
+            return car;
         }
     }
 }

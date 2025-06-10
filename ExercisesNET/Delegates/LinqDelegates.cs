@@ -1,9 +1,17 @@
-﻿namespace Exercises.Delegates
+﻿using ExercisesNET;
+
+namespace Exercises.Delegates
 {
     public static class LinqDelegates
     {
         static void Main()
         {
+            new AesEncryption().Test();
+
+            var scanner = new PluginScanner();
+            scanner.ScanAndUse();
+
+
             var users = CreateCollection.GetUsers();
         }
     }

@@ -9,6 +9,18 @@ using System.Threading.Tasks;
 
 namespace DIProject.UserManager
 {
+    class RepoMock : IRepository
+    {
+        public int ExecuteNonQueryCommand(string command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User? GetUserCommand(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class UserManager : IUserManager
     {
         private readonly IRepository _dbRepository;

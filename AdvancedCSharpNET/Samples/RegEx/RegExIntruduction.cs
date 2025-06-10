@@ -6,7 +6,7 @@ namespace AdvancedCSharp.Samples.RegEx
     class RegExIntruduction
     {
         const string AddressCodePattern = @"\d{2}-\d{3}";
-        //const string AddressCodePattern = @"\b[0-9]{2}-[0-9]{3}\b";
+        //const string AddressCodePattern = @"[0123456789]{2}-[0-9]{3}";
         const string HtmlTagsPatternGreedy = "<.+>";
         const string HtmlTagsPatternLazy = "<.+?>";
 
