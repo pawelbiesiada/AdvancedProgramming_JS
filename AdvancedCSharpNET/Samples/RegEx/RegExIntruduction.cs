@@ -12,8 +12,17 @@ namespace AdvancedCSharp.Samples.RegEx
 
         static void Main()
         {
-            Regex regex = new Regex(AddressCodePattern);
-            var inputSentence = "Mój kod poc00-000ztowy to 00-001 w Warszawie";
+            Regex regex = new Regex("\\b(?<dopasowanie>\\w+)(?<kropka>\\.)");
+
+            var inputSentence = "Mój kod poc00-000ztowy to 00-001 w Warszawie.";
+
+            var wordMatch = regex.Match(inputSentence);
+            if (wordMatch != null)
+            {
+                Console.WriteLine(wordMatch.Groups["dopasowanie"]);
+            }
+
+
             Regex.Match(inputSentence, AddressCodePattern);
             var match = regex.Matches(inputSentence);
             if (match[0].Success)

@@ -6,13 +6,14 @@ namespace Exercises.Delegates
     {
         static void Main()
         {
-            new AesEncryption().Test();
+            new FileContentReader().TestCancellationAsync().Wait();
+            //new AesEncryption().Test();
 
-            var scanner = new PluginScanner();
-            scanner.ScanAndUse();
+            //var scanner = new PluginScanner();
+            //scanner.ScanAndUse();
 
 
-            var users = CreateCollection.GetUsers();
+            //var users = CreateCollection.GetUsers();
         }
     }
 
